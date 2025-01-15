@@ -26,11 +26,7 @@ jobs:
         run: msbuild SampleFormsApp.sln -t:rebuild -verbosity:diag -property:Configuration=$env:Configuration
         env:
           Configuration: ${{ matrix.configuration }}
-      - name: vstest-action
-        uses: microsoft/vstest-action@v1.0.0
-        with:
-          testAssembly: |
-            **\${{ matrix.configuration }}\net48\SampleFormApp_Test.dll
-            !**\obj\**
+      - name: dotnet test
+        run: dotnet test **\bin\**\SampleFormApp_Test.dll
 
 
