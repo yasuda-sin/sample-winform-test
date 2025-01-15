@@ -22,4 +22,3 @@ jobs:
         run: msbuild SampleFormsApp.sln /p:Configuration=$env:Configuration /p:Platform="Any CPU"
         env:
           Configuration: ${{ matrix.configuration }}
-          Appx_Bundle_Platforms: x86|x64
