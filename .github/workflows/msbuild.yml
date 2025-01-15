@@ -18,6 +18,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v2.0.1
+      - name: Restore NuGet Packages
+        run: nuget restore SampleFormsApp.sln
       - name: Build app for release
         run: msbuild SampleFormsApp.sln -t:rebuild -verbosity:diag -property:Configuration=Release
 
