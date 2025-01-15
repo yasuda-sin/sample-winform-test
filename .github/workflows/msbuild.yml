@@ -26,4 +26,9 @@ jobs:
         run: msbuild SampleFormsApp.sln -t:rebuild -verbosity:diag -property:Configuration=$env:Configuration
         env:
           Configuration: ${{ matrix.configuration }}
+      - name: dotnet test
+        run: |
+          dotnet test 
+          **\bin\${{ matrix.configuration }}\SampleFormApp_Test.dll
+
 
