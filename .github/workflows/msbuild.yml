@@ -19,6 +19,5 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
       - name: Build app for release
-        run: msbuild SampleFormsApp.sln /p:Configuration=$env:Configuration
-        env:
-          Configuration: ${{ matrix.configuration }}
+        run: msbuild SampleFormsApp.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+
